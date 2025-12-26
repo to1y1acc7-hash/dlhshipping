@@ -1,0 +1,289 @@
+.personal-info-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 100px 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.personal-info-container {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  width: 100%;
+  flex: 1;
+}
+
+.personal-info-header {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+.personal-info-back {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.personal-info-back:hover {
+  background: #f5f5f5;
+  color: #d40511;
+}
+
+.personal-info-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.personal-info-section {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.personal-info-content {
+  padding: 0;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item:hover {
+  background: #f9f9f9;
+}
+
+.info-label {
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+}
+
+.info-value-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-value {
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+}
+
+.info-arrow {
+  font-size: 18px;
+  color: #999;
+}
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-picture svg {
+  font-size: 20px;
+  color: #666;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Avatar Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.avatar-modal-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.avatar-modal-close:hover {
+  color: #d40511;
+}
+
+.avatar-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.avatar-modal-select {
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #d40511;
+  cursor: pointer;
+  padding: 5px 15px;
+  font-weight: 500;
+}
+
+.avatar-modal-select:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.avatar-modal-select:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.avatar-modal-content {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.avatar-option {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.avatar-option:hover {
+  transform: scale(1.05);
+}
+
+.avatar-option.selected .avatar-placeholder {
+  border-color: #d40511;
+  border-width: 3px;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid #e0e0e0;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar-placeholder svg {
+  font-size: 40px;
+  color: #999;
+}
+
+.avatar-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .personal-info-page {
+    padding: 80px 15px 0;
+  }
+
+  .personal-info-title {
+    font-size: 20px;
+  }
+
+  .avatar-modal {
+    width: 95%;
+    max-height: 85vh;
+  }
+  
+  .avatar-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .avatar-modal-header {
+    padding: 15px;
+  }
+  
+  .avatar-modal-content {
+    padding: 15px;
+  }
+}
+

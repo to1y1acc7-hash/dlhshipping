@@ -1,0 +1,42 @@
+.service-detail-page {
+  width: 100%;
+  max-width: 100%;
+  min-height: calc(100vh - 150px);
+  background: #ffffff;
+  padding: 40px 20px 0 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.service-detail-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.service-detail-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #D40511;
+  margin-bottom: 30px;
+}
+
+.service-detail-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.service-detail-content p {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .service-detail-page {
+    padding: 20px 10px;
+  }
+
+  .service-detail-title {
+    font-size: 24px;
+  }
+}
+

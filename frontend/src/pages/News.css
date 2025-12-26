@@ -1,0 +1,143 @@
+.news-page {
+  width: 100%;
+  min-height: calc(100vh - 150px);
+  background: #fff;
+}
+
+/* News List Section */
+.news-list-section {
+  width: 100%;
+  padding: 60px 20px;
+  background: #fff;
+  margin-bottom: 80px;
+}
+
+.news-list-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000;
+  text-align: left;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+.news-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.news-list-item {
+  display: flex;
+  gap: 30px;
+  background: #fff;
+  border-radius: 0;
+  overflow: hidden;
+  align-items: flex-start;
+}
+
+.news-list-image {
+  flex: 0 0 300px;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.news-list-image-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-list-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 14px;
+  background: #e0e0e0;
+}
+
+.news-list-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.news-list-item-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.news-list-excerpt {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.news-list-read-more {
+  background: #d40511;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0;
+  align-self: flex-start;
+  transition: background 0.3s;
+}
+
+.news-list-read-more:hover {
+  background: #b0040e;
+}
+
+@media (max-width: 768px) {
+  .news-list-item {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .news-list-image {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .news-list-item-title {
+    font-size: 18px;
+  }
+  
+  .news-list-excerpt {
+    font-size: 14px;
+  }
+  
+  .news-list-read-more {
+    width: 100%;
+    padding: 12px 20px;
+  }
+  
+  .news-list-title {
+    font-size: 28px;
+  }
+  
+  .news-list-section {
+    padding: 120px 15px 40px 15px;
+  }
+
+  .news-list-title {
+    margin-top: 0;
+  }
+}
+

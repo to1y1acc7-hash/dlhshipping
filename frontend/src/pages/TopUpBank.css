@@ -1,0 +1,261 @@
+.top-up-bank-page {
+  width: 100%;
+  min-height: calc(100vh - 150px);
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.top-up-bank-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.top-up-bank-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+.top-up-bank-back {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.top-up-bank-back:hover {
+  background: #f5f5f5;
+  color: #d40511;
+}
+
+.top-up-bank-title-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  padding: 12px 15px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.top-up-bank-icon {
+  font-size: 24px;
+  color: #d40511;
+}
+
+.top-up-bank-title {
+  font-size: 16px;
+  color: #d40511;
+  font-weight: 500;
+  flex: 1;
+}
+
+.top-up-bank-arrow {
+  font-size: 18px;
+  color: #999;
+}
+
+.top-up-bank-content {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.amount-section {
+  margin-bottom: 30px;
+}
+
+.amount-label {
+  display: block;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.amount-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 15px;
+  color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.amount-input:focus {
+  outline: none;
+  border-color: #d40511;
+}
+
+.amount-input::placeholder {
+  color: #999;
+}
+
+.amount-input:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.amount-hint {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-top: 5px;
+}
+
+.amount-preview {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+  padding: 8px 12px;
+  background: #f0f8ff;
+  border-radius: 4px;
+  border-left: 3px solid #d40511;
+}
+
+.amount-preview strong {
+  color: #d40511;
+  font-size: 15px;
+}
+
+.bank-info-section {
+  margin-bottom: 30px;
+}
+
+.bank-info-notice {
+  font-size: 14px;
+  color: #d40511;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.bank-info-table {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bank-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.bank-info-row:last-child {
+  border-bottom: none;
+}
+
+.bank-info-label {
+  font-size: 15px;
+  color: #333;
+}
+
+.bank-info-value {
+  font-size: 15px;
+  color: #999;
+}
+
+.confirm-button {
+  width: 100%;
+  padding: 15px;
+  background: #d40511;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.confirm-button:hover {
+  background: #b0040e;
+}
+
+.confirm-button:active {
+  transform: scale(0.98);
+}
+
+.confirm-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.confirm-button:disabled:hover {
+  background: #ccc;
+}
+
+.deposit-instructions {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-left: 4px solid #d40511;
+  border-radius: 6px;
+}
+
+.instructions-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.instructions-list {
+  margin: 0 0 15px 0;
+  padding-left: 20px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.instructions-list li {
+  margin-bottom: 8px;
+}
+
+.instructions-list li:last-child {
+  margin-bottom: 0;
+}
+
+.instructions-note {
+  font-size: 13px;
+  color: #d40511;
+  margin: 0;
+  font-weight: 500;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .top-up-bank-page {
+    padding: 20px 15px;
+  }
+
+  .top-up-bank-title-section {
+    padding: 10px 12px;
+  }
+
+  .bank-info-row {
+    padding: 12px;
+  }
+
+  .confirm-button {
+    padding: 14px;
+  }
+}
+

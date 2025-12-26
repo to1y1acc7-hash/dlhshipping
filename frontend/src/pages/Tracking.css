@@ -1,0 +1,546 @@
+.account-dashboard {
+  width: 100%;
+  min-height: calc(100vh - 150px);
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.account-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.account-greeting h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.account-detail-link a {
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.account-detail-link a {
+  cursor: pointer;
+}
+
+.account-detail-link a:hover {
+  color: #d40511;
+  text-decoration: underline;
+}
+
+/* Summary Header Row */
+.summary-header-row {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.detail-info-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  text-align: right;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.detail-info-title:hover {
+  color: #d40511;
+}
+
+.summary-greeting-text {
+  font-size: 20px;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+  text-align: left;
+}
+
+.summary-user-name {
+  font-weight: 600;
+}
+
+/* Account Summary */
+.account-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.summary-box {
+  background: #f5f5f5;
+  padding: 25px;
+  border-radius: 0;
+  text-align: center;
+}
+
+.summary-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.summary-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Quick Access Section */
+.quick-access-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.quick-access-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.quick-access-item {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-height: 100px;
+}
+
+.quick-access-item:hover {
+  border-color: #d40511;
+  background: #f9f9f9;
+}
+
+.quick-access-icon {
+  font-size: 32px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.quick-access-text {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Main Menu Section */
+.main-menu-section {
+  margin-bottom: 40px;
+}
+
+.menu-list {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:hover {
+  background: #f9f9f9;
+}
+
+.menu-item-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu-icon {
+  font-size: 20px;
+  color: #666;
+  width: 20px;
+}
+
+.menu-text {
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+}
+
+.menu-arrow {
+  font-size: 18px;
+  color: #999;
+}
+
+.menu-item-logout {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 10px;
+}
+
+.menu-icon-logout {
+  color: #d40511;
+}
+
+.menu-text-logout {
+  color: #d40511;
+  font-weight: 600;
+}
+
+/* Personal Information Section */
+.personal-info-section {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.personal-info-header {
+  background: #f5f5f5;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.personal-info-tab {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.personal-info-content {
+  padding: 0;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item:hover {
+  background: #f9f9f9;
+}
+
+.info-label {
+  font-size: 15px;
+  color: #333;
+  font-weight: 400;
+}
+
+.info-value-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-value {
+  font-size: 15px;
+  color: #333;
+}
+
+.info-arrow {
+  font-size: 18px;
+  color: #999;
+}
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-picture svg {
+  font-size: 20px;
+  color: #666;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Avatar Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.avatar-modal-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.avatar-modal-close:hover {
+  color: #d40511;
+}
+
+.avatar-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.avatar-modal-select {
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #d40511;
+  cursor: pointer;
+  padding: 5px 15px;
+  font-weight: 500;
+}
+
+.avatar-modal-select:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.avatar-modal-select:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.avatar-modal-content {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.avatar-option {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.avatar-option:hover {
+  transform: scale(1.05);
+}
+
+.avatar-option.selected .avatar-placeholder {
+  border-color: #d40511;
+  border-width: 3px;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid #e0e0e0;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar-placeholder svg {
+  font-size: 40px;
+  color: #999;
+}
+
+.avatar-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .avatar-modal {
+    width: 95%;
+    max-height: 85vh;
+  }
+  
+  .avatar-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .avatar-modal-header {
+    padding: 15px;
+  }
+  
+  .avatar-modal-content {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .account-dashboard {
+    padding: 20px 15px;
+  }
+  
+  .account-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .account-greeting h2 {
+    font-size: 20px;
+  }
+
+  .summary-header-row {
+    display: flex !important;
+    margin-bottom: 15px;
+    flex-direction: row;
+    gap: 10px;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .detail-info-title {
+    font-size: 16px;
+    text-align: right;
+  }
+
+  .summary-greeting-text {
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  .account-summary {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .summary-box {
+    padding: 15px 10px;
+  }
+
+  .summary-label {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .summary-value {
+    font-size: 20px;
+  }
+  
+  .quick-access-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .quick-access-item {
+    padding: 15px;
+    min-height: 80px;
+  }
+  
+  .quick-access-icon {
+    font-size: 24px;
+  }
+  
+  .quick-access-text {
+    font-size: 12px;
+  }
+  
+  .section-title {
+    text-align: left;
+  }
+  
+  .menu-item {
+    padding: 15px;
+  }
+  
+  .menu-text {
+    font-size: 14px;
+  }
+}

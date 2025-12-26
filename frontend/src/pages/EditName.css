@@ -1,0 +1,151 @@
+.edit-name-page {
+  width: 100%;
+  min-height: calc(100vh - 150px);
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.edit-name-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.edit-name-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+.edit-name-back {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.edit-name-back:hover {
+  background: #f5f5f5;
+  color: #d40511;
+}
+
+.edit-name-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.edit-name-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-name-field {
+  margin-bottom: 20px;
+}
+
+.edit-name-label {
+  display: block;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.edit-name-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 15px;
+  color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.edit-name-input:focus {
+  outline: none;
+  border-color: #d40511;
+}
+
+.edit-name-warning {
+  background: #fff5f5;
+  border-left: 3px solid #d40511;
+  padding: 15px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #d40511;
+  line-height: 1.6;
+}
+
+.edit-name-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.edit-name-cancel,
+.edit-name-save {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.edit-name-cancel {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.edit-name-cancel:hover {
+  background: #e0e0e0;
+}
+
+.edit-name-save {
+  background: #d40511;
+  color: #fff;
+}
+
+.edit-name-save:hover {
+  background: #b0040e;
+}
+
+@media (max-width: 768px) {
+  .edit-name-page {
+    padding: 20px 15px;
+  }
+
+  .edit-name-content {
+    padding: 20px;
+  }
+
+  .edit-name-title {
+    font-size: 20px;
+  }
+
+  .edit-name-actions {
+    flex-direction: column;
+  }
+
+  .edit-name-cancel,
+  .edit-name-save {
+    width: 100%;
+  }
+}
+

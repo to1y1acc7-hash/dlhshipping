@@ -1,0 +1,215 @@
+.hero-banner {
+  width: 100%;
+  position: relative;
+  height: 75vh;
+  min-height: 450px;
+  max-height: 700px;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+}
+
+/* Desktop - Tăng độ rộng và che phủ */
+@media (min-width: 1024px) {
+  .hero-banner {
+    height: 85vh;
+    min-height: 550px;
+    max-height: 900px;
+  }
+
+  .hero-slide {
+    width: 100%;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+}
+
+/* Large Desktop - Tăng thêm cho màn hình lớn */
+@media (min-width: 1440px) {
+  .hero-banner {
+    height: 88vh;
+    min-height: 650px;
+    max-height: 1100px;
+  }
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+}
+
+.banner_swiper {
+  height: 100%;
+  width: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0; /* Không bo góc */
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.banner_img {
+  border-radius: 0; /* Không bo góc */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.4)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  padding: 40px;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  font-size: 24px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  outline: none; /* Loại bỏ outline khi focus */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.3s;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: none; /* Loại bỏ shadow nếu có */
+}
+
+.hero-arrow:hover {
+  opacity: 0.8;
+}
+
+.hero-arrow:focus {
+  outline: none; /* Loại bỏ outline khi focus */
+  border: none;
+}
+
+.hero-arrow-left {
+  left: 20px;
+}
+
+.hero-arrow-right {
+  right: 20px;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.hero-dot {
+  width: 30px;
+  height: 2.22px;
+  border-radius: 0;
+  border: 2px solid white;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  margin: 0;
+  outline: none; /* Loại bỏ outline khi focus */
+  position: relative;
+}
+
+/* Tăng vùng click để dễ bấm hơn */
+.hero-dot::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -5px;
+  right: -5px;
+  bottom: -8px;
+}
+
+.hero-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-dot.active {
+  background: white;
+  border-color: white;
+}
+
+.hero-dot:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 380px;
+    min-height: 280px;
+    max-height: 450px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+  }
+
+  .hero-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+}
+

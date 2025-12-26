@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log
+.env
+.env.local
+README.md
+*.md
+.vscode
+.idea
+uploads/*
+!uploads/.keep
+database/*.sqlite
+database/*.sqlite-journal
+.DS_Store
+
