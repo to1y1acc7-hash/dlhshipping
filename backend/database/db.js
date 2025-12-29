@@ -773,6 +773,16 @@ function init() {
                   }
                 });
               }
+              // Migration: Add rewards_processed column if not exists
+              if (!columnNames.includes('rewards_processed')) {
+                database.run(`ALTER TABLE poll_results ADD COLUMN rewards_processed INTEGER DEFAULT 0`, (err) => {
+                  if (!err) {
+                    console.log('✅ Added rewards_processed column to poll_results');
+                  } else {
+                    console.error('Error adding rewards_processed column to poll_results:', err);
+                  }
+                });
+              }
             }
           });
         }
@@ -3264,7 +3274,7 @@ async function processPeriodRewards(itemId, periodNumber) {
             // Tạo transaction record
             await new Promise((resolve, reject) => {
               getDb().run(
-                `INSERT INTO transactions (user_id, username, type, amount, balance_before, balance_after, description, status, notes)
+                `INSERT INTO transactions (user_id, username, transaction_type, amount, balance_before, balance_after, description, status, admin_note)
                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                 [
                   history.user_id,
@@ -3300,6 +3310,22 @@ async function processPeriodRewards(itemId, periodNumber) {
       if (totalRewardDistributed > 0) {
         await updatePollResultReward(itemId, periodNumber, totalRewardDistributed);
       }
+
+      // Đánh dấu đã xử lý trả thưởng cho kỳ này
+      await new Promise((resolve, reject) => {
+        getDb().run(
+          `UPDATE poll_results SET rewards_processed = 1 WHERE item_id = ? AND period_number = ?`,
+          [itemId, periodNumber],
+          function(err) {
+            if (err) {
+              console.error('Error marking rewards as processed:', err);
+              reject(err);
+            } else {
+              resolve();
+            }
+          }
+        );
+      });
 
       console.log(`💰 Period ${periodNumber} rewards processed: ${processedCount} users, total: ${totalRewardDistributed} VNĐ`);
       resolve({ processed: processedCount, totalReward: totalRewardDistributed });
@@ -3789,7 +3815,10 @@ async function autoGeneratePollResult(item) {
     const periodsElapsed = Math.floor(elapsedSeconds / gameDurationSeconds);
     const remainingSeconds = gameDurationSeconds - (elapsedSeconds % gameDurationSeconds);
     
-    // LUÔN kiểm tra và tạo kết quả cho kỳ hiện tại nếu chưa có (cho item mới được tạo)
+    // Log để debug
+    console.log(`⏱️ Item ${itemId}: elapsed=${elapsedSeconds}s, remaining=${remainingSeconds}s, periodsElapsed=${periodsElapsed}`);
+    
+    // LUÔN kiểm tra và xử lý trả thưởng cho kỳ hiện tại nếu đã có kết quả
     const currentPeriodNumber = await getCurrentPeriodNumber(itemId, gameDuration).catch(() => null);
     
     if (currentPeriodNumber) {
@@ -3847,9 +3876,7 @@ async function autoGeneratePollResult(item) {
         );
         
         console.log(`✅ Created result for item ${itemId}, period ${currentPeriodNumber}, winning: ${winningProductName} (${winningProduct}) and ${winningProduct2}`);
-        return { success: true, periodsGenerated: 1, periodNumber: currentPeriodNumber };
-      } else {
-        console.log(`ℹ️ Result already exists for item ${itemId}, period ${currentPeriodNumber}`);
+        // Không return ở đây để tiếp tục xử lý trả thưởng cho các kỳ trước
       }
     }
     
@@ -3938,11 +3965,12 @@ async function autoGeneratePollResult(item) {
         const day = String(periodStartTime.getDate()).padStart(2, '0');
         const periodNumberToProcess = `${year}${month}${day}${periodToProcess - 1}`;
         
-        // Kiểm tra xem đã xử lý trả thưởng chưa (kiểm tra reward_amount > 0)
+        // Kiểm tra xem đã xử lý trả thưởng chưa (dùng cột rewards_processed)
         const result = await getPollResultByPeriod(itemId, periodNumberToProcess).catch(() => null);
-        if (result && parseFloat(result.reward_amount || 0) === 0) {
+        if (result && !result.rewards_processed) {
           // Chưa xử lý, xử lý trả thưởng cho kỳ này
           try {
+            console.log(`💰 Processing rewards for period ${periodNumberToProcess}...`);
             await processPeriodRewards(itemId, periodNumberToProcess);
           } catch (error) {
             console.error(`Error processing rewards for period ${periodNumberToProcess}:`, error);
@@ -3970,15 +3998,41 @@ async function autoGeneratePollResult(item) {
       });
     }
     
-    // Xử lý trả thưởng ở cuối giây cuối cùng của kỳ hiện tại (remainingSeconds <= 1)
-    if (remainingSeconds <= 1 && periodsElapsed === 0) {
+    // Xử lý trả thưởng cho các kỳ đã kết thúc
+    // Khi periodsElapsed > 0, nghĩa là có kỳ đã kết thúc cần xử lý
+    if (periodsElapsed > 0) {
+      // Xử lý trả thưởng cho kỳ vừa kết thúc (kỳ trước kỳ hiện tại)
+      const previousPeriodNumber = await getCurrentPeriodNumber(itemId, gameDuration).catch(() => null);
+      if (previousPeriodNumber) {
+        // Tính period number của kỳ trước
+        const periodNum = parseInt(previousPeriodNumber.substring(8)) || 0;
+        const datePrefix = previousPeriodNumber.substring(0, 8);
+        const prevPeriodNumber = `${datePrefix}${periodNum - 1}`;
+        
+        console.log(`🔍 Checking rewards for previous period ${prevPeriodNumber}...`);
+        
+        const result = await getPollResultByPeriod(itemId, prevPeriodNumber).catch(() => null);
+        if (result && !result.rewards_processed) {
+          try {
+            console.log(`💰 Processing rewards for ended period ${prevPeriodNumber}...`);
+            await processPeriodRewards(itemId, prevPeriodNumber);
+          } catch (error) {
+            console.error(`Error processing rewards for period ${prevPeriodNumber}:`, error);
+          }
+        }
+      }
+    }
+    
+    // Xử lý trả thưởng ở cuối kỳ hiện tại (khi còn <= 5 giây)
+    if (remainingSeconds <= 5 && periodsElapsed === 0) {
       const currentPeriodNumber = await getCurrentPeriodNumber(itemId, gameDuration).catch(() => null);
       if (currentPeriodNumber) {
-        // Kiểm tra xem đã xử lý trả thưởng chưa (kiểm tra reward_amount > 0)
+        // Kiểm tra xem đã xử lý trả thưởng chưa (dùng cột rewards_processed)
         const result = await getPollResultByPeriod(itemId, currentPeriodNumber).catch(() => null);
-        if (result && parseFloat(result.reward_amount || 0) === 0) {
-          // Chưa xử lý, xử lý trả thưởng ở cuối giây cuối cùng
+        if (result && !result.rewards_processed) {
+          // Chưa xử lý, xử lý trả thưởng
           try {
+            console.log(`💰 Processing rewards for current period ${currentPeriodNumber}...`);
             await processPeriodRewards(itemId, currentPeriodNumber);
           } catch (error) {
             console.error(`Error processing rewards for current period ${currentPeriodNumber}:`, error);
